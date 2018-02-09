@@ -107,19 +107,21 @@ For each cluster of pixels identified as a lane, I fit a 2nd order polynomial to
 
 ![alt text][image5]
 
-If lanes were found in the previous frame, then a truncated search was performed which passed over the historam in favor of starting the search at the coordinates of the lane in the last frame.
-
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-The code for this step is contained in the 16th code cell of the IPython notebook located [here](./Advanced_Lane_Lines.ipynb).
+The code for this step is contained in the 15th code cell of the IPython notebook located [here](./Advanced_Lane_Lines.ipynb).
 I first took the curve fit found in the previous step and converted it from pixels to meters. I then used the new polynomials and applied them to the following equation found [here](https://www.intmath.com/applications-differentiation/8-radius-curvature.php):
 
 R = (1 + (2Ay + B)^2)^(3/2) / |2A|
 
+The position of the vehicle was calculated using the follow equation:
+
+C = Image_Center - (X_Position_L_Lane + X_Mid_Between_Lanes)
+
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-The code for this step is contained in the 36th code cell of the IPython notebook located [here](./Advanced_Lane_Lines.ipynb). Here is an example of my result on a test image:
+The code for this step is contained in the 17th code cell of the IPython notebook located [here](./Advanced_Lane_Lines.ipynb). Here is an example of my result on a test image:
 
 ![alt text][image6]
 
