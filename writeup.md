@@ -85,19 +85,6 @@ The code for my perspective transform includes a function called `warper()`, whi
 
 ![alt text][image7]
 
-```python
-    src = np.float32(
-        [[714, 466],
-        [1107,dy],
-        [219,dy],
-        [573, 466]])
-    dst = np.float32(
-        [[dx*3/4,0],
-        [dx*3/4,dy],
-        [dx/4,dy],
-        [dx/4,0]])
-```
-
 This resulted in the following source and destination points:
 
 | Source        | Destination   | 
@@ -141,6 +128,8 @@ The code for this step is contained in the 36th code cell of the IPython noteboo
 ### Pipeline (video)
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
+
+![alt text][video1]
 
 Here's a [link to my video result](./project_video.mp4)
 
