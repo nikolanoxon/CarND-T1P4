@@ -23,7 +23,7 @@ The goals / steps of this project are the following:
 [image2]: ./test_images/straight_lines2_undist.png "Road Transformed"
 [image3]: ./examples/straight_lines2_binary_thresh.png "Binary Example"
 [image4]: ./examples/straight_lines2_binary_warped.png "Warp Example"
-[image5]: ./examples/straight_lines2_fit.png "Fit Visual"
+[image5]: ./examples/straight_lines2_fit.png "Fit Example"
 [image6]: ./examples/straight_lines2_lanes.png "Output"
 [video1]: ./project_video.mp4 "Video"
 
