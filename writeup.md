@@ -131,9 +131,11 @@ The code for this step is contained in the 17th code cell of the IPython noteboo
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-![alt text][video1]
+Here's a [link to my project video result](./project_video.mp4)
 
-Here's a [link to my video result](./project_video.mp4)
+And here's [my challenge video result](./challenge_video.mp4)
+
+And lastly, [my harder challenge video result](./harder_challenge_video.mp4)
 
 ---
 
@@ -141,4 +143,18 @@ Here's a [link to my video result](./project_video.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+Most issues encountered for this project revolved around an inibility to identify lane markings in all environmental and road conditions. I spent a significant amount of time experimenting with different color spaces and thresholding techniques to get it tuned as well as I could. As I tested, I put together a selection of frames which captured a wide range of road conditions. As I experiemented, checked that each change did not have a negative imact on any of these frames.
+
+Once I had made the thresholding as robust as possible, I utilized a running average of the lane information for the last 7 frames to help smooth out the jumps between frames. Additionally, I included plasubility checks on the lanes to filter out lanes which had unrealistic features. This included:
+- Checking for large jumps in the base position of the lane
+- Comparing the distance between the lanes
+- Checking the positions of the lanes
+- Checking for large changes in the curvature of the lane
+- Comparing the curvature of the left and right lanes
+If the lanes did not pass the plausibility check, then that frame was tossed out. If no lanes were detected for 7 frames then I considered the lane "lost" and did not show anything.
+
+The code for this step is contained in the 19th code cell of the IPython notebook located [here](./Advanced_Lane_Lines.ipynb). 
+
+One shortcoming of my pipeline is with the thresholding. More robust thresholding techniques would likely improve the lane detection under dynamic lighting and poor road conditions. Another is a limitation of the sliding window search. By limiting the lateral movement of the window, sharp turns will not be detected. If information about the steering angle was known, then a dynamic parameter could be used to improve the lateral search tolerance.
+
+Another failure mode would be for onramps, offramps, and construction zones. By adding in map data along with a preplanned navigation and GPS, we could know if an exit needed to to taken or ignored, and know to ignore onramps alltogether. Construction zones could be detected using traffic sign recognition, which could temporarily disable the system while in that zone (if needed).
